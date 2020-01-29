@@ -1,0 +1,18 @@
+.toolbar {
+  > * {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  span {
+    font-weight: bold;
+  }
+
+  a {
+    font-weight: normal;
+    color: white;
+  }
+
+  .active {
+    background-color: #125699;
+  }
+}
