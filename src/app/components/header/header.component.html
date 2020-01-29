@@ -5,5 +5,11 @@
     src="assets/logo-univ-lorraine.png"
   />
   <span>Portail web</span>
-  <div class="spacer"></div>
+  <ng-container *ngIf="isLoggedIn">
+    <a routerLink="/dashboard" routerLinkActive="active">Accueil</a>
+    <a routerLink="/news" routerLinkActive="active">Actualités</a>
+    <a routerLink="/trombinoscope" routerLinkActive="active">Trombinoscope</a>
+    <div class="spacer"></div>
+    <a routerLink="" (click)="logOut()">Se déconnecter</a>
+  </ng-container>
 </div>
