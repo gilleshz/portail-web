@@ -19,6 +19,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireFunctionsModule} from '@angular/fire/functions';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireRemoteConfigModule} from '@angular/fire/remote-config';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -42,7 +52,17 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireFunctionsModule,
+    AngularFirestoreModule,
+    AngularFireRemoteConfigModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
