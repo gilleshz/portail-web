@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router';
+import {User} from '../models/users';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {switchMap} from 'rxjs/operators';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +14,26 @@ import {Router} from '@angular/router';
 
 export class AuthenticationService {
   userData: Observable<firebase.User>;
+  user: BehaviorSubject<User> = new BehaviorSubject(null);
   isLoggedIn = false;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
+    private firestore: AngularFirestore,
     private router: Router
   ) {
     this.userData = angularFireAuth.authState;
+
+    this.userData.subscribe(
+      userData => {
+        if (userData) {
+          this.firestore.doc<User>('users/' + userData.uid).valueChanges().subscribe(
+            user => this.user.next(user)
+          );
+        }
+        this.user.next(null);
+      }
+    );
   }
 
   signUp(email: string, password: string) {

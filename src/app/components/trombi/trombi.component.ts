@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../models/users';
+import {Observable} from 'rxjs';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-trombi',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrombiComponent implements OnInit {
 
-  constructor() { }
+  private usersCollection: AngularFirestoreCollection<User>;
+  users: Observable<User[]>;
+
+  constructor(private afs: AngularFirestore) {
+    this.usersCollection = afs.collection<User>('users');
+    this.users = this.usersCollection.valueChanges();
+  }
 
   ngOnInit() {
   }

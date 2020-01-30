@@ -12,6 +12,10 @@ export class HeaderComponent implements OnInit {
     return this.authenticationService.isLoggedIn;
   }
 
+  get username() {
+    return this.authenticationService.user.getValue().firstName;
+  }
+
   constructor(
     private authenticationService: AuthenticationService
   ) {

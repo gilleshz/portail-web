@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard]  },
   { path: 'news', component: NewsComponent, canActivate: [LoggedInGuard]  },
   { path: 'trombinoscope', component: TrombiComponent, canActivate: [LoggedInGuard]  },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({
