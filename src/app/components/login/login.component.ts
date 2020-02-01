@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,15 @@ export class LoginComponent implements OnInit {
   hide = true;
 
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this.router.navigate(['dashboard']);
+    }
   }
 
   logIn() {
