@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../models/users';
 import {Observable} from 'rxjs';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-trombi',
@@ -10,12 +10,10 @@ import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firest
 })
 export class TrombiComponent implements OnInit {
 
-  private usersCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
 
-  constructor(private afs: AngularFirestore) {
-    this.usersCollection = afs.collection<User>('users');
-    this.users = this.usersCollection.valueChanges();
+  constructor(private usersService: UsersService) {
+    this.users = usersService.users;
   }
 
   ngOnInit() {

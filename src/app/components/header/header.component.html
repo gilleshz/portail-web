@@ -10,7 +10,7 @@
     <a routerLink="/news" routerLinkActive="active">Actualités</a>
     <a routerLink="/trombinoscope" routerLinkActive="active">Trombinoscope</a>
     <div class="spacer"></div>
-    <p>Bienvenue {{ username }}</p>
+    <p *ngIf="user">Bienvenue {{ user.firstName }}</p>
     <a routerLink="" (click)="logOut()">Se déconnecter</a>
   </ng-container>
 </div>

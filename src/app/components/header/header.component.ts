@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../services/authentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,13 @@ export class HeaderComponent implements OnInit {
     return this.authenticationService.isLoggedIn;
   }
 
-  get username() {
-    return this.authenticationService.user.getValue().firstName;
+  get user() {
+    return this.userService.user.getValue();
   }
 
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userService: UserService
   ) {
   }
 

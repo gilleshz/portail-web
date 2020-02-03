@@ -1,26 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/login/login.component';
-import { HeaderComponent } from './components/header/header.component';
-import { NewsComponent } from './components/news/news.component';
-import { TrombiComponent } from './components/trombi/trombi.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
+import { NewsComponent } from 'src/app/components/news/news.component';
+import { TrombiComponent } from 'src/app/components/trombi/trombi.component';
+import { NavigationComponent } from 'src/app/components/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -28,8 +28,10 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireRemoteConfigModule } from '@angular/fire/remote-config';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from '../environments/environment';
-import { UserCardComponent } from './components/user-card/user-card.component';
+import { environment } from 'src/environments/environment';
+import { UserCardComponent } from 'src/app/components/trombi/user-card/user-card.component';
+import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
+import {RolePipe} from 'src/app/pipes/role.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     TrombiComponent,
     NavigationComponent,
     DashboardComponent,
-    UserCardComponent
+    UserCardComponent,
+    UpdateUserComponent,
+    RolePipe
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,12 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     AngularFirestoreModule,
     AngularFireRemoteConfigModule,
     AngularFireStorageModule,
+    FormsModule,
+    MatDialogModule,
+    MatSelectModule,
+    ],
+  entryComponents: [
+    UpdateUserComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

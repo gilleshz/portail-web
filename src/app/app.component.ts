@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {AuthenticationService} from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,6 @@ export class AppComponent {
   title = 'portail-web';
 
   constructor(
-    private authenticationService: AuthenticationService
   ) {
   }
 }

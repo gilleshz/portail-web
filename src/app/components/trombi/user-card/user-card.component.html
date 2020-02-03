@@ -3,8 +3,12 @@
     <div mat-card-avatar class="user-card-header-image"></div>
     <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
     <div class="spacer"></div>
-    <mat-icon class="pencil">edit</mat-icon>
-  <mat-card-subtitle>{{roles}}</mat-card-subtitle>
+    <button mat-icon-button (click)="openDialog()" [disabled]="dialogOpened">
+      <mat-icon class="pencil">edit</mat-icon>
+    </button>
+  <mat-card-subtitle>
+    <span *ngFor="let role of user.roles; last as last">{{ role | role }}{{ last ? '' : ', ' }}</span>
+  </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="info">
