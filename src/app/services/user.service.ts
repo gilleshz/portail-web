@@ -19,11 +19,40 @@ export class UserService {
 
   fetchUserInfo(uid: number|string) {
     this.firestore.doc<User>('users/' + uid).valueChanges().subscribe(
-      user => this.user.next(user)
+      user => this.user.next({ uid, ...user})
     );
   }
 
   clearUserInfo() {
     this.user.next(null);
+  }
+
+  isAdmin(): boolean {
+    if (!this.user.getValue()) {
+      return false;
+    }
+    return this.user.getValue().roles.includes('admin');
+  }
+
+  isClient(): boolean {
+    if (!this.user.getValue()) {
+      return false;
+    }
+    return this.user.getValue().roles.includes('client');
+  }
+
+  isEmployee(): boolean {
+    if (!this.user.getValue()) {
+      return false;
+    }
+    return this.user.getValue().roles.includes('employee');
+  }
+
+  canUpdateUser(user: User): boolean {
+    return this.isAdmin() || (this.user.getValue() && user.uid === this.user.getValue().uid);
+  }
+
+  canUpdateUserRoles() {
+    return this.isAdmin();
   }
 }
