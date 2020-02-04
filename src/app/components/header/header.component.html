@@ -1,16 +1,25 @@
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="assets/logo-univ-lorraine.png"
-  />
-  <span>Portail web</span>
+<nav class="navbar-header" aria-label="Top Toolbar">
+  <a mat-button class="navbar-button" routerLink="/" aria-label="Angular Material">
+    <img width="40" alt="UL Logo" src="assets/logo-univ-lorraine.png"/>
+    <span>Portail web</span>
+  </a>
   <ng-container *ngIf="isLoggedIn">
-    <a routerLink="/dashboard" routerLinkActive="active">Accueil</a>
-    <a routerLink="/news" routerLinkActive="active">Actualités</a>
-    <a routerLink="/trombinoscope" routerLinkActive="active">Trombinoscope</a>
-    <div class="spacer"></div>
-    <p *ngIf="user">Bienvenue {{ user.firstName }}</p>
-    <a routerLink="" (click)="logOut()">Se déconnecter</a>
+    <a mat-button class="navbar-hide-small navbar-button" routerLink="/dashboard" routerLinkActive="active">Accueil</a>
+    <a mat-button class="navbar-hide-small navbar-button" routerLink="/news" routerLinkActive="active">Actualités</a>
+    <a mat-button class="navbar-hide-small navbar-button" routerLink="/trombinoscope" routerLinkActive="active">Trombinoscope</a>
+    <div class="flex-spacer"></div>
+
+    <a mat-button class="navbar-button navbar-hide-small" routerLink="" (click)="logOut()">
+      <mat-icon class="docs-angular-logo">logout</mat-icon>
+      Se déconnecter
+    </a>
+    <a mat-icon-button class="navbar-button navbar-show-small" routerLink="" (click)="logOut()">
+      <mat-icon class="docs-angular-logo">logout</mat-icon>
+    </a>
   </ng-container>
-</div>
+</nav>
+<nav class="navbar navbar-show-small" aria-label="Section Nav Bar">
+  <a mat-button class="navbar-link" routerLink="/dashboard" routerLinkActive="active">Accueil</a>
+  <a mat-button class="navbar-link" routerLink="/news" routerLinkActive="active">Actualités</a>
+  <a mat-button class="navbar-link" routerLink="/trombinoscope" routerLinkActive="active">Trombinoscope</a>
+</nav>

@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/user';
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-card',
@@ -17,6 +18,7 @@ export class UserCardComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
+    private userService: UserService,
     private usersService: UsersService
   ) {
   }
@@ -36,8 +38,11 @@ export class UserCardComponent implements OnInit {
       this.dialogOpened = false;
       if (result) {
         this.usersService.updateUser(this.user.uid, result);
-        this.user = result;
       }
     });
+  }
+
+  canUpdateUser() {
+    return this.userService.canUpdateUser(this.user);
   }
 }
