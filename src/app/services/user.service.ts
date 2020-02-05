@@ -55,4 +55,8 @@ export class UserService {
   canUpdateUserRoles() {
     return this.isAdmin();
   }
+
+  canAddArticles() {
+    return this.isAdmin();
+  }
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {Article} from '../../models/article';
+import {NewsService} from '../../services/news.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-news',
@@ -7,7 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  articles: Observable<Article[]>;
+
+  get canAddArticle() {
+    return this.userService.canAddArticles();
+  }
+
+  constructor(
+    private newsService: NewsService,
+    private userService: UserService
+  ) {
+    this.articles = newsService.articles;
+  }
 
   ngOnInit() {
   }
