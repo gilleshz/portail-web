@@ -4,6 +4,8 @@ import { Article, ArticleTemplate } from '../models/article';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
+import {User} from '../models/user';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -30,13 +32,25 @@ export class NewsService {
   }
 
   updateArticle(uid: string, article: Article) {
-    return this.firestore.collection('articles').doc(uid).set(article);
+    return this.firestore.collection('news').doc(uid).set(article);
   }
 
   createArticle(title: string, content: string) {
-    const article = {
+    const currentUser = this.angularFireAuth.auth.currentUser;
+    if (currentUser == null) {
+      return;
+    }
+
+    const author = this.firestore.collection<User>('users').doc(currentUser.uid).ref as firebase.firestore.DocumentReference<User>;
+    const date = firebase.firestore.Timestamp.fromDate(new Date());
+
+    const articleTemplate: ArticleTemplate = {
       title,
-      content
+      content,
+      author,
+      date
     };
+
+    return this.firestore.collection('news').add(articleTemplate);
   }
 }

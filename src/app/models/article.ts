@@ -6,8 +6,9 @@ export interface ArticleTemplate {
   title: string;
   content: string;
   author: firebase.firestore.DocumentReference<User>;
-}
-export interface Article extends ArticleTemplate {
-  uid: string;
   date: Timestamp;
+}
+
+export interface Article extends ArticleTemplate {
+  uid?: string;
 }

@@ -3,16 +3,12 @@
         <mat-card-content>
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Titre" formControlName="title">
-                <mat-error *ngIf="form.get('title').touched && form.get('title').hasError('required')">Veuillez entrer un titre</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline">
-                <input type="text" matInput placeholder="Titre" formControlName="content">
-                <mat-error *ngIf="form.get('content').dirty && form.get('content').hasError('required')">Le contenu de l'article ne peut être vide</mat-error>
-            </mat-form-field>
+          <ckeditor [editor]="ckEditor" data="<p>Hello, world!</p>" formControlName="content"></ckeditor>
         </mat-card-content>
         <mat-card-actions>
             <button (click)="close()" mat-button>Annuler</button>
-            <button [disabled]="form.dirty && form.invalid" type="submit" mat-button>Publier</button>
+            <button [disabled]="form.invalid" type="submit" mat-button>Publier</button>
         </mat-card-actions>
     </mat-card>
 </form>

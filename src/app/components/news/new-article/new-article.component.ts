@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewsService } from 'src/app/services/news.service';
+import * as CKEditor from '@ckeditor/ckeditor5-build-classic';
+import {ArticleTemplate} from '../../../models/article';
 
 @Component({
   selector: 'app-new-article',
@@ -15,6 +17,7 @@ export class NewArticleComponent implements OnInit {
   });
 
   @Output() closeForm = new EventEmitter<null>();
+  ckEditor = CKEditor;
 
   constructor(private newsService: NewsService) { }
 
@@ -26,7 +29,9 @@ export class NewArticleComponent implements OnInit {
   }
 
   publish() {
-    this.close();
+    this.newsService.createArticle(this.form.value.title, this.form.value.content).then(
+      () => this.close()
+    );
   }
 
 }
