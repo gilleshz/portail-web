@@ -12,6 +12,7 @@ import {UserService} from '../../services/user.service';
 export class NewsComponent implements OnInit {
 
   articles: Observable<Article[]>;
+  showForm = false;
 
   get canAddArticle() {
     return this.userService.canAddArticles();

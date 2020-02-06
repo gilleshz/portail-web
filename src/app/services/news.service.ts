@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Article } from '../models/article';
+import { Article, ArticleTemplate } from '../models/article';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
@@ -31,5 +31,12 @@ export class NewsService {
 
   updateArticle(uid: string, article: Article) {
     return this.firestore.collection('articles').doc(uid).set(article);
+  }
+
+  createArticle(title: string, content: string) {
+    const article = {
+      title,
+      content
+    };
   }
 }

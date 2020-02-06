@@ -1,4 +1,5 @@
 <div class="news">
-  <button *ngIf="canAddArticle" id="add-article" mat-raised-button color="primary">Ajouter un article</button>
+  <button *ngIf="canAddArticle && !showForm" id="add-article" mat-raised-button color="primary" (click)="showForm = true">Ajouter un article</button>
+  <app-new-article *ngIf="showForm" (closeForm)="showForm = false"></app-new-article>
   <app-article [article]="article" *ngFor="let article of articles | async"></app-article>
 </div>

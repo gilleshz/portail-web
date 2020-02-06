@@ -33,6 +33,8 @@ import { UserCardComponent } from 'src/app/components/trombi/user-card/user-card
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
 import {RolePipe} from 'src/app/pipes/role.pipe';
 import { ArticleComponent } from './components/news/article/article.component';
+import { NewArticleComponent } from './components/news/new-article/new-article.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ArticleComponent } from './components/news/article/article.component';
     UserCardComponent,
     UpdateUserComponent,
     RolePipe,
-    ArticleComponent
+    ArticleComponent,
+    NewArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { ArticleComponent } from './components/news/article/article.component';
     FormsModule,
     MatDialogModule,
     MatSelectModule,
-    ],
+    CKEditorModule,
+  ],
   entryComponents: [
     UpdateUserComponent
   ],
