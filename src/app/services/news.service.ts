@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Article, ArticleTemplate } from '../models/article';
+import { Article, ArticleTemplate } from 'src/app/models/article';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
-import {User} from '../models/user';
+import { User } from 'src/app/models/user';
 import * as firebase from 'firebase';
 
 @Injectable({

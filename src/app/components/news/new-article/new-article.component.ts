@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewsService } from 'src/app/services/news.service';
 import * as CKEditor from '@ckeditor/ckeditor5-build-classic';
-import {ArticleTemplate} from '../../../models/article';
 
 @Component({
   selector: 'app-new-article',
