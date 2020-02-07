@@ -4,9 +4,9 @@
     <span>Portail web</span>
   </a>
   <ng-container *ngIf="isLoggedIn">
-    <a mat-button class="navbar-hide-small navbar-button" routerLink="/dashboard" routerLinkActive="active">Accueil</a>
     <a mat-button class="navbar-hide-small navbar-button" routerLink="/news" routerLinkActive="active">Actualités</a>
     <a mat-button class="navbar-hide-small navbar-button" routerLink="/trombinoscope" routerLinkActive="active">Trombinoscope</a>
+    <a mat-button class="navbar-hide-small navbar-button" routerLink="/storage" routerLinkActive="active">Fichiers</a>
     <div class="flex-spacer"></div>
 
     <a mat-button class="navbar-button navbar-hide-small" routerLink="" (click)="logOut()">

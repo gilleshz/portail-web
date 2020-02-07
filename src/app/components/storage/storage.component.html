@@ -1,0 +1,11 @@
+<p>Gestion des fichiers</p>
+
+<p>Dossiers</p>
+<ul>
+  <li *ngFor="let directory of subDirectories"><button (click)="path = directory.fullPath">{{ directory.name }}</button></li>
+</ul>
+<br />
+<p>Fichiers</p>
+<ul>
+  <li *ngFor="let file of files"><a [href]="">{{ file.name }} {{downloadFile(file.fullPath) | async}}</a></li>
+</ul>
