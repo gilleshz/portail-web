@@ -1,11 +1,14 @@
-import {User} from './user';
+import { User } from 'src/app/models/user';
 import * as firebase from 'firebase';
 import Timestamp = firebase.firestore.Timestamp;
 
-export interface Article {
-  uid: string;
+export interface ArticleTemplate {
   title: string;
   content: string;
-  date: Timestamp;
   author: firebase.firestore.DocumentReference<User>;
+  date: Timestamp;
+}
+
+export interface Article extends ArticleTemplate {
+  uid?: string;
 }

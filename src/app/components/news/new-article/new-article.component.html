@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="publish()">
+    <mat-card>
+        <mat-card-content>
+            <mat-form-field appearance="outline">
+                <input type="text" matInput placeholder="Titre" formControlName="title">
+            </mat-form-field>
+          <ckeditor [editor]="ckEditor" data="<p>Hello, world!</p>" formControlName="content"></ckeditor>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="close()" mat-button>Annuler</button>
+            <button [disabled]="form.invalid" type="submit" mat-button>Publier</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
