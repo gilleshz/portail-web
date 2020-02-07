@@ -32,6 +32,9 @@ import { environment } from 'src/environments/environment';
 import { UserCardComponent } from 'src/app/components/trombi/user-card/user-card.component';
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
 import {RolePipe} from 'src/app/pipes/role.pipe';
+import { ArticleComponent } from './components/news/article/article.component';
+import { NewArticleComponent } from './components/news/new-article/new-article.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import {RolePipe} from 'src/app/pipes/role.pipe';
     DashboardComponent,
     UserCardComponent,
     UpdateUserComponent,
-    RolePipe
+    RolePipe,
+    ArticleComponent,
+    NewArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,8 @@ import {RolePipe} from 'src/app/pipes/role.pipe';
     FormsModule,
     MatDialogModule,
     MatSelectModule,
-    ],
+    CKEditorModule,
+  ],
   entryComponents: [
     UpdateUserComponent
   ],

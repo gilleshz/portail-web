@@ -1,0 +1,32 @@
+.news {
+  position: absolute;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+app-new-article {
+  width: 100%;
+}
+
+app-article {
+  width: 100%;
+}
+
+#add-article {
+  margin-top: 20px;
+}
+
+@media (max-width: 660px) {
+  .news {
+    position: absolute;
+    left: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+  }
+}

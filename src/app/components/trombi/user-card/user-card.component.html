@@ -3,7 +3,7 @@
     <div mat-card-avatar class="user-card-header-image"></div>
     <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
     <div class="spacer"></div>
-    <button mat-icon-button (click)="openDialog()" [disabled]="dialogOpened">
+    <button mat-icon-button *ngIf="canUpdateUser()" (click)="openDialog()" [disabled]="dialogOpened">
       <mat-icon class="pencil">edit</mat-icon>
     </button>
   <mat-card-subtitle>

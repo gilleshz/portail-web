@@ -1,18 +1,70 @@
-.toolbar {
-  > * {
-    padding: 15px;
-    border-radius: 10px;
+.navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+
+  > .mat-button {
+    &:last-child {
+      margin-left: auto;
+    }
   }
-  span {
-    font-weight: bold;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.logout-button {
+  height: 21px;
+  margin: 0 7px 2px 0;
+  vertical-align: middle;
+}
+
+.navbar-link {
+  text-decoration: inherit;
+  flex: 1;
+}
+
+.navbar {
+  display: none;
+}
+
+.navbar-show-small {
+  display: none;
+}
+
+a {
+  font-weight: normal;
+  color: white;
+}
+
+.active {
+  background-color: #4b62b6;
+}
+
+nav {
+  background-color: #3f51b5;
+}
+
+/**
+  * Rules for when the device is detected to be a small screen.
+  * Moves content two rows instead of one.
+  */
+@media (max-width: 660px) {
+  .navbar-hide-small {
+    display: none;
   }
 
-  a {
-    font-weight: normal;
-    color: white;
+  .navbar-show-small {
+    display: block;
   }
 
-  .active {
-    background-color: #125699;
+  .navbar {
+    display: flex;
+  }
+
+  .navbar--logout-button {
+    margin: 0;
   }
 }
