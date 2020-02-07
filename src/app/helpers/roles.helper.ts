@@ -1,4 +1,4 @@
-export class RolesUtils {
+export class RolesHelper {
   public static getFormattedRole(role: string): string {
     switch (role) {
       case 'user':
