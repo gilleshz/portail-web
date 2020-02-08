@@ -5,7 +5,6 @@ import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import * as firebase from 'firebase';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class StorageService {
 
   constructor(
-    private storage: AngularFireStorage,
-    private http: HttpClient
+    private storage: AngularFireStorage
   ) { }
 
   listAll(path: string): Observable<firebase.storage.ListResult> {

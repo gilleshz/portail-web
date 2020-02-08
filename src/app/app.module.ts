@@ -35,7 +35,9 @@ import {RolePipe} from 'src/app/pipes/role.pipe';
 import { ArticleComponent } from './components/news/article/article.component';
 import { NewArticleComponent } from './components/news/new-article/new-article.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { StorageComponent } from './components/storage/storage.component';
+import { StorageComponent } from 'src/app/components/storage/storage.component';
+import { FileComponent } from 'src/app/components/storage/file/file.component';
+import { DirectoryComponent } from 'src/app/components/storage/directory/directory.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { StorageComponent } from './components/storage/storage.component';
     RolePipe,
     ArticleComponent,
     NewArticleComponent,
-    StorageComponent
+    StorageComponent,
+    FileComponent,
+    DirectoryComponent
   ],
   imports: [
     BrowserModule,
