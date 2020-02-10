@@ -1,10 +1,18 @@
+<mat-toolbar class="breadcrumbs">
+  <span class="breadcrumb" *ngFor="let breadcrumbPath of breadcrumbPaths">
+    <mat-icon *ngIf="breadcrumbPath !== ''">keyboard_arrow_right</mat-icon>
+    <mat-icon *ngIf="breadcrumbPath === ''">home</mat-icon>
+    <button mat-flat-button (click)="path = breadcrumbPath">
+      {{ breadcrumbPath === '' ? 'Fichiers' : breadcrumbPath.split('/').pop() }}
+    </button>
+  </span>
+  <div class="flex-spacer"></div>
+</mat-toolbar>
+<mat-divider></mat-divider>
 <div *ngIf="subDirectories.length > 0" class="directories">
   <app-directory *ngFor="let directory of subDirectories" (click)="path = directory.fullPath" [directory]="directory"></app-directory>
 </div>
 
-<br />
-
 <div *ngIf="files.length > 0"  class="files">
-  <p>Fichiers</p>
   <app-file *ngFor="let file of files" [file]="file"></app-file>
 </div>

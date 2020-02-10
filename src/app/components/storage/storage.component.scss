@@ -1,6 +1,33 @@
-.directories, .files {
+* {
+  color: #333333;
+}
+
+.directories, .files, .breadcrumbs {
   display: flex;
   flex-wrap: wrap;
   width: 90%;
-  margin-top: 25pt;
+}
+
+.directories, .breadcrumbs {
+  margin-top: 15px;
+}
+
+.breadcrumbs {
+  flex: 1 1 auto;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+button {
+  padding: 0;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  vertical-align: center;
 }

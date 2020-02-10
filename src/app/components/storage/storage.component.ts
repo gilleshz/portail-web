@@ -28,6 +28,19 @@ export class StorageComponent implements OnInit {
     );
   }
 
+  get breadcrumbPaths(): string[] {
+    const pathElements = this.path.split('/').filter(elt => elt !== '');
+    const parentPaths = [''];
+    for (const elt of pathElements) {
+      const path = parentPaths.length === 1
+        ? elt
+        : parentPaths[parentPaths.length - 1] + '/' + elt;
+      parentPaths.push(path);
+    }
+
+    return parentPaths;
+  }
+
   constructor(
     private storageService: StorageService
   ) { }
