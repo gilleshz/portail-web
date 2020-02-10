@@ -1,4 +1,6 @@
 <mat-toolbar class="breadcrumbs">
+  <button mat-icon-button class="add-file-small show-small"><mat-icon>cloud_upload</mat-icon></button>
+  <button mat-icon-button class="add-directory-small show-small"><mat-icon>create_new_folder</mat-icon></button>
   <span class="breadcrumb" *ngFor="let breadcrumbPath of breadcrumbPaths">
     <mat-icon *ngIf="breadcrumbPath !== ''">keyboard_arrow_right</mat-icon>
     <mat-icon *ngIf="breadcrumbPath === ''">home</mat-icon>
@@ -7,6 +9,8 @@
     </button>
   </span>
   <div class="flex-spacer"></div>
+  <button mat-stroked-button class="add-file hide-small"><mat-icon inline>cloud_upload</mat-icon> Ajouter un fichier</button>
+  <button mat-stroked-button class="add-directory hide-small"><mat-icon inline>create_new_folder</mat-icon> Créer un dossier</button>
 </mat-toolbar>
 <mat-divider></mat-divider>
 <div *ngIf="subDirectories.length > 0" class="directories">
