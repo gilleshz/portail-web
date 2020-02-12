@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/user';
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
