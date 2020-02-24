@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserCardComponent } from 'src/app/components/trombi/user-card/user-card.component';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
@@ -12,11 +12,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   styleUrls: ['./upload-file.component.scss']
 })
 export class UploadFileComponent implements OnInit {
-  ref: AngularFireStorageReference;
-  task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
   showProgressBar = false;
   path: string;
+  isHovering: boolean;
+  files: File[] = [];
 
   constructor(
     private storage: AngularFireStorage,
@@ -29,13 +29,22 @@ export class UploadFileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  upload(event) {
-    const file = event.target.files[0];
-    console.log(this.path);
-    this.ref = this.storage.ref(this.path + '/' + file.name);
-    this.task = this.ref.put(file);
+  selectFile(event) {
+    this.files = event.target.files;
+  }
+
+  upload() {
     this.showProgressBar = true;
-    this.uploadProgress = this.task.percentageChanges().pipe(
+    const observables: Array<Observable<number>> = [];
+    this.files.forEach(
+      file => {
+        const ref = this.storage.ref(this.path + '/' + file.name);
+        const task = ref.put(file);
+        observables.push(task.percentageChanges());
+      }
+    );
+    this.uploadProgress = combineLatest(observables).pipe(
+      map(progresses => progresses.reduce((a, b) => a + b, 0) / this.files.length),
       tap(
         progress => {
           if (progress === 100) {
@@ -48,5 +57,17 @@ export class UploadFileComponent implements OnInit {
 
   onCancelClick(): void {
     this.dialogRef.close();
+  }
+
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
+
+  onDrop(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files.item(i));
+    }
+
+    this.upload();
   }
 }

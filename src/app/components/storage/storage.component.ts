@@ -62,9 +62,7 @@ export class StorageComponent implements OnInit {
   }
 
   openUploadDialog(): void {
-
     const dialogRef = this.dialog.open(UploadFileComponent, { width: '500px', data: this.currentPath });
-
     dialogRef.afterClosed().toPromise().finally(
       () => this.refresh()
     );

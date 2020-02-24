@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "portail-web"
+  "defaultProject": "portail-web",
+  "cli": {
+    "analytics": false
+  }
 }

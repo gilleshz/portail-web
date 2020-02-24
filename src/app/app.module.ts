@@ -43,7 +43,7 @@ import { FileComponent } from 'src/app/components/storage/file/file.component';
 import { DirectoryComponent } from 'src/app/components/storage/directory/directory.component';
 import { UploadFileComponent } from './components/dialog/upload-file/upload-file.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { DropzoneDirective } from './directives/dropzone.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +61,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     StorageComponent,
     FileComponent,
     DirectoryComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    DropzoneDirective
   ],
   imports: [
     BrowserModule,
