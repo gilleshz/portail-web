@@ -1,0 +1,29 @@
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 200;
+  height: 150px;
+  border: 2px dashed #4b4b4b;
+  border-radius: 5px;
+  background: #f4f4f4;
+  margin: 10px 0;
+
+  &.hovering {
+    border: 2px solid #4b4b4b;
+    color: #848484 !important;
+  }
+
+  .file-label {
+    font-size: 1.2em;
+  }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}

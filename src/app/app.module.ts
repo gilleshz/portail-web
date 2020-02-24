@@ -41,7 +41,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { StorageComponent } from 'src/app/components/storage/storage.component';
 import { FileComponent } from 'src/app/components/storage/file/file.component';
 import { DirectoryComponent } from 'src/app/components/storage/directory/directory.component';
-
+import { UploadFileComponent } from './components/dialog/upload-file/upload-file.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { DropzoneDirective } from './directives/dropzone.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,9 @@ import { DirectoryComponent } from 'src/app/components/storage/directory/directo
     NewArticleComponent,
     StorageComponent,
     FileComponent,
-    DirectoryComponent
+    DirectoryComponent,
+    UploadFileComponent,
+    DropzoneDirective
   ],
   imports: [
     BrowserModule,
@@ -87,6 +91,7 @@ import { DirectoryComponent } from 'src/app/components/storage/directory/directo
     MatDialogModule,
     MatSelectModule,
     CKEditorModule,
+    MatProgressBarModule,
   ],
   entryComponents: [
     UpdateUserComponent
