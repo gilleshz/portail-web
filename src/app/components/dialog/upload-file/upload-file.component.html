@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Ajouter un fichier</h1>
+<div class="content" mat-dialog-content>
+  <input type="file" (change)="upload($event)" />
+  <mat-progress-bar *ngIf="showProgressBar" mode="determinate" [value]="uploadProgress | async"></mat-progress-bar>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Annuler</button>
+</div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
 import { Reference } from '@angular/fire/storage/interfaces';
+import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
+import { MatDialog } from '@angular/material/dialog';
+import { UploadFileComponent } from 'src/app/components/dialog/upload-file/upload-file.component';
 
 @Component({
   selector: 'app-storage',
@@ -20,12 +23,7 @@ export class StorageComponent implements OnInit {
 
   set path(path: string) {
     this.currentPath = path;
-    this.storageService.listAll(path).subscribe(
-      results => {
-        this.subDirectories = results.prefixes;
-        this.files = results.items;
-      }
-    );
+    this.refresh();
   }
 
   get breadcrumbPaths(): string[] {
@@ -42,6 +40,7 @@ export class StorageComponent implements OnInit {
   }
 
   constructor(
+    private dialog: MatDialog,
     private storageService: StorageService
   ) { }
 
@@ -49,7 +48,25 @@ export class StorageComponent implements OnInit {
     this.path = '';
   }
 
+  refresh() {
+    this.storageService.listAll(this.currentPath).subscribe(
+      results => {
+        this.subDirectories = results.prefixes;
+        this.files = results.items;
+      }
+    );
+  }
+
   downloadFile(path: string) {
     return this.storageService.downloadFile(path);
+  }
+
+  openUploadDialog(): void {
+
+    const dialogRef = this.dialog.open(UploadFileComponent, { width: '500px', data: this.currentPath });
+
+    dialogRef.afterClosed().toPromise().finally(
+      () => this.refresh()
+    );
   }
 }
