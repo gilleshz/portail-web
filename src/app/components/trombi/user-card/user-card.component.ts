@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/user';
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
 import { UserService } from 'src/app/services/user.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-user-card',
@@ -37,6 +38,7 @@ export class UserCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.dialogOpened = false;
       if (result) {
+        result.joinDate = firebase.firestore.Timestamp.fromDate(result.joinDate);
         this.usersService.updateUser(this.user.uid, result);
       }
     });

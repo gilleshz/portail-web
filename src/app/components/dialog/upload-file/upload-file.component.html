@@ -1,5 +1,3 @@
-
-<h1 mat-dialog-title>Ajouter des fichiers</h1>
 <div class="content" mat-dialog-content>
   <div class="dropzone"
        dropzone
@@ -7,10 +5,7 @@
        (dropped)="onDrop($event)"
        [class.hovering]="isHovering">
     <h3>Déposer les fichiers ici</h3>
-    Ou <input type="file" (change)="selectFile($event)" />
+    <input type="file" (change)="selectFile($event)"/>
   </div>
   <mat-progress-bar *ngIf="showProgressBar" mode="determinate" [value]="uploadProgress | async"></mat-progress-bar>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancelClick()">Annuler</button>
 </div>

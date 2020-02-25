@@ -44,6 +44,9 @@ import { DirectoryComponent } from 'src/app/components/storage/directory/directo
 import { UploadFileComponent } from './components/dialog/upload-file/upload-file.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DropzoneDirective } from './directives/dropzone.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,11 +95,14 @@ import { DropzoneDirective } from './directives/dropzone.directive';
     MatSelectModule,
     CKEditorModule,
     MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     UpdateUserComponent
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
