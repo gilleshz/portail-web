@@ -46,6 +46,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DropzoneDirective } from './directives/dropzone.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CKEditorModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CommonModule
   ],
   entryComponents: [
     UpdateUserComponent
