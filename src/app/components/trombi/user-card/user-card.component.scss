@@ -1,32 +1,14 @@
 .user-card {
-  min-width: 250px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
+  width: 250px;
+  margin: 10px
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 639px) {
   .user-card {
     width:100%;
-}
-}
-
-@media only screen and (max-width: 354px) {
-  .user-card {
-    width: 250px;
-}
+  }
 }
 
-.user-card > * {
-  width: 100%;
-  flex: 1;
-}
-
-.user-card-header-image {
-  background-image: url('https://www.cmcaindia.org/wp-content/uploads/2015/11/default-profile-picture-gmail-2.png');
-  background-size: cover;
-}
 
 .info {
   display: flex;
@@ -35,4 +17,46 @@
   font-size: medium;
   width: 100%;
   flex: 1;
+}
+
+.container {
+  position: relative;
+  width: 113%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000000;
+}
+
+.container:hover .overlay {
+  opacity: 0.5;
+  cursor: pointer;
+
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

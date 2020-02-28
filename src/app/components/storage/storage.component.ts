@@ -57,12 +57,8 @@ export class StorageComponent implements OnInit {
     );
   }
 
-  downloadFile(path: string) {
-    return this.storageService.downloadFile(path);
-  }
-
   openUploadDialog(): void {
-    const dialogRef = this.dialog.open(UploadFileComponent, { width: '500px', data: this.currentPath });
+    const dialogRef = this.dialog.open(UploadFileComponent, { width: '500px', data: { path: this.currentPath } });
     dialogRef.afterClosed().toPromise().finally(
       () => this.refresh()
     );
