@@ -1,0 +1,20 @@
+<mat-toolbar class="breadcrumbs">
+  <button mat-icon-button class="add-file-small show-small" (click)="openUploadDialog()"><mat-icon>cloud_upload</mat-icon></button>
+  <span class="breadcrumb" *ngFor="let breadcrumbPath of breadcrumbPaths">
+    <mat-icon *ngIf="breadcrumbPath !== ''">keyboard_arrow_right</mat-icon>
+    <mat-icon *ngIf="breadcrumbPath === ''">home</mat-icon>
+    <button mat-flat-button (click)="path = breadcrumbPath">
+      {{ breadcrumbPath === '' ? 'Fichiers' : breadcrumbPath.split('/').pop() }}
+    </button>
+  </span>
+  <div class="flex-spacer"></div>
+  <button mat-stroked-button class="add-file hide-small" (click)="openUploadDialog()"><mat-icon inline>cloud_upload</mat-icon> Ajouter des fichiers</button>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<div *ngIf="subDirectories.length > 0" class="directories">
+  <app-directory *ngFor="let directory of subDirectories" (click)="path = directory.fullPath" [directory]="directory"></app-directory>
+</div>
+
+<div *ngIf="files.length > 0"  class="files">
+  <app-file *ngFor="let file of files" [file]="file"></app-file>
+</div>

@@ -1,10 +1,11 @@
 import {Component, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { UserCardComponent } from 'src/app/components/trombi/user-card/user-card.component';
 import { UserService } from 'src/app/services/user.service';
 import { availableRoles } from 'src/app/models/roles';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-update-user',
@@ -21,6 +22,8 @@ export class UpdateUserComponent {
     lastName: new FormControl(this.data.lastName, [Validators.required, Validators.email]),
     email: new FormControl(this.data.email, [Validators.required, Validators.email]),
     phone: new FormControl(this.data.phone),
+    team: new FormControl(this.data.team),
+    joinDate: new FormControl(this.data.joinDate?.toDate()),
     roles: new FormControl(this.data.roles),
   });
 

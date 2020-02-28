@@ -1,0 +1,11 @@
+<div class="content" mat-dialog-content>
+  <div class="dropzone"
+       dropzone
+       (hovered)="toggleHover($event)"
+       (dropped)="onDrop($event)"
+       [class.hovering]="isHovering">
+    <h3>{{ maxFiles === 1 ? 'Déposer le fichier ici' : 'Déposer les fichiers ici' }}</h3>
+    <input type="file" (change)="selectFiles($event)" [multiple]="!maxFiles || maxFiles > 1" [accept]="fileInputAccept"/>
+  </div>
+  <mat-progress-bar *ngIf="showProgressBar" mode="determinate" [value]="uploadProgress | async"></mat-progress-bar>
+</div>

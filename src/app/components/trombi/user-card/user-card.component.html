@@ -1,21 +1,42 @@
-<mat-card class="user-card">
+<mat-card class="user-card" >
   <mat-card-header>
-    <div mat-card-avatar class="user-card-header-image"></div>
-    <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+    <mat-card-title>{{ userFullName }}</mat-card-title>
     <div class="spacer"></div>
-    <button mat-icon-button *ngIf="canUpdateUser()" (click)="openDialog()" [disabled]="dialogOpened">
+    <button mat-icon-button *ngIf="canUpdateUser()" (click)="openEditionDialog()" [disabled]="dialogOpened">
       <mat-icon class="pencil">edit</mat-icon>
     </button>
   <mat-card-subtitle>
     <span *ngFor="let role of user.roles; last as last">{{ role | role }}{{ last ? '' : ', ' }}</span>
   </mat-card-subtitle>
   </mat-card-header>
+  <div
+    mat-card-image
+    class="container"
+    (click)="openUploadDialog()"
+  >
+    <img
+      class="image"
+      [src]="this.user.photoURL || '/assets/anonymous.png'"
+      (click)="openUploadDialog()"
+      [alt]="userFullName"
+    >
+    <div class="overlay">
+      <div class="text">Modifier l'image</div>
+    </div>
+  </div>
+
   <mat-card-content>
-    <div class="info">
+    <div *ngIf="user.phone" class="info">
         <mat-icon>phone</mat-icon>&nbsp;{{user.phone}}
     </div>
-    <div class="info">
+    <div *ngIf="user.email" class="info">
         <mat-icon>email</mat-icon>&nbsp;{{user.email}}
+    </div>
+    <div *ngIf="user.team" class="info">
+        <mat-icon>people</mat-icon>&nbsp;{{user.team}}
+    </div>
+    <div *ngIf="user.joinDate" class="info">
+        <mat-icon>event</mat-icon>&nbsp;{{user.joinDate?.toDate() | date}}
     </div>
   </mat-card-content>
 

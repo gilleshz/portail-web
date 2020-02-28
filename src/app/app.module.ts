@@ -19,7 +19,10 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -35,6 +38,15 @@ import {RolePipe} from 'src/app/pipes/role.pipe';
 import { ArticleComponent } from './components/news/article/article.component';
 import { NewArticleComponent } from './components/news/new-article/new-article.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { StorageComponent } from 'src/app/components/storage/storage.component';
+import { FileComponent } from 'src/app/components/storage/file/file.component';
+import { DirectoryComponent } from 'src/app/components/storage/directory/directory.component';
+import { UploadFileComponent } from './components/dialog/upload-file/upload-file.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { DropzoneDirective } from './directives/dropzone.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,7 +61,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     UpdateUserComponent,
     RolePipe,
     ArticleComponent,
-    NewArticleComponent
+    NewArticleComponent,
+    StorageComponent,
+    FileComponent,
+    DirectoryComponent,
+    UploadFileComponent,
+    DropzoneDirective
   ],
   imports: [
     BrowserModule,
@@ -78,11 +95,16 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatDialogModule,
     MatSelectModule,
     CKEditorModule,
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CommonModule
   ],
   entryComponents: [
     UpdateUserComponent
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,65 @@
+* {
+  color: #333333;
+}
+
+.directories, .files, .breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.directories, .breadcrumbs {
+  margin-top: 15px;
+}
+
+.breadcrumbs {
+  flex: 1 1 auto;
+  background-color: rgba(255, 255, 255, 0);
+  height: auto;
+}
+
+button.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+}
+
+button {
+  padding: 0;
+}
+
+.show-small {
+  display: none;
+}
+
+.add-file, .add-directory {
+  padding: 2px 10px 2px 10px;
+  margin-bottom: 5px;
+}
+
+.add-file{
+  margin-right: 6px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  vertical-align: center;
+}
+
+@media (max-width: 660px) {
+  .hide-small {
+    display: none;
+  }
+
+  .show-small {
+    display: block;
+  }
+
+  .add-directory-small {
+    margin-right: 4px;
+  }
+}

@@ -6,6 +6,7 @@ import {NewsComponent} from 'src/app/components/news/news.component';
 import {TrombiComponent} from 'src/app/components/trombi/trombi.component';
 import {LoggedInGuard} from 'src/app/logged-in.guard';
 import {LoggedOutGuard} from 'src/app/logged-out.guard';
+import { StorageComponent } from 'src/app/components/storage/storage.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard]  },
   { path: 'news', component: NewsComponent, canActivate: [LoggedInGuard]  },
   { path: 'trombinoscope', component: TrombiComponent, canActivate: [LoggedInGuard]  },
+  { path: 'storage', component: StorageComponent, canActivate: [LoggedInGuard]  },
   { path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 

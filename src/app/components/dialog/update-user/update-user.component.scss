@@ -1,13 +1,14 @@
 .content {
   display: flex;
   flex-direction: column;
+  height: auto;
 }
 
-.first-name {
+.half-left {
   width: 47.5%;
   margin-right: 5%;
 }
-.last-name {
+.half-right {
   width: 47.5%;
 }
 .full {
