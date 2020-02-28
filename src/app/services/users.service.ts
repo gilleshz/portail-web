@@ -4,6 +4,8 @@ import { User } from 'src/app/models/user';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
+import { NewsHelper } from 'src/app/helpers/news.helper';
+import { UsersHelper } from 'src/app/helpers/users.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,7 @@ export class UsersService {
           const uid = action.payload.doc.id;
           return { uid, ...data };
         });
-      })
+      }),
     );
   }
 

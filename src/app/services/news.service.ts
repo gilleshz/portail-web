@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import * as firebase from 'firebase';
+import { NewsHelper } from 'src/app/helpers/news.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,7 @@ export class NewsService {
           return { uid, ...data };
         });
       }),
+      map(articles => articles.sort(NewsHelper.compareArticlesByDate).reverse())
     );
   }
 
