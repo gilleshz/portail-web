@@ -35,6 +35,10 @@ export class UserCardComponent implements OnInit {
   }
 
   openEditionDialog(): void {
+    if (!this.userService.canUpdateUser(this.user)) {
+      return;
+    }
+
     this.dialogOpened = true;
 
     const dialogRef = this.dialog.open(UpdateUserComponent, {
@@ -45,14 +49,14 @@ export class UserCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.dialogOpened = false;
       if (result) {
-        result.joinDate = firebase.firestore.Timestamp.fromDate(result.joinDate);
-        this.usersService.updateUser(this.user.uid, result);
+        result.joinDate = result.joinDate ? firebase.firestore.Timestamp.fromDate(result.joinDate) : null;
+        this.usersService.updateUser(this.user.uid, {...this.user, ...result });
       }
     });
   }
 
   openUploadDialog(): void {
-    if (this.dialogOpened) {
+    if (this.dialogOpened || !this.userService.canUpdateUser(this.user)) {
       return;
     }
 

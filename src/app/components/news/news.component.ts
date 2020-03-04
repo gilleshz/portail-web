@@ -3,8 +3,6 @@ import { Observable } from 'rxjs';
 import { Article } from 'src/app/models/article';
 import { NewsService } from 'src/app/services/news.service';
 import { UserService } from 'src/app/services/user.service';
-import { NewsHelper } from 'src/app/helpers/news.helper';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-news',
@@ -24,9 +22,7 @@ export class NewsComponent implements OnInit {
     private newsService: NewsService,
     private userService: UserService
   ) {
-    this.articles = newsService.articles.pipe(
-      map(articles => articles.sort(NewsHelper.compareArticlesByDate).reverse())
-    );
+    this.articles = newsService.articles;
   }
 
   ngOnInit() {

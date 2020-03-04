@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
 import { Reference } from '@angular/fire/storage/interfaces';
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadFileComponent } from 'src/app/components/dialog/upload-file/upload-file.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-storage',
@@ -11,6 +12,8 @@ import { UploadFileComponent } from 'src/app/components/dialog/upload-file/uploa
   styleUrls: ['./storage.component.scss']
 })
 export class StorageComponent implements OnInit {
+
+  @Input() showHeader = true;
 
   private currentPath = '';
   subDirectories: Reference[] = [];
@@ -39,9 +42,14 @@ export class StorageComponent implements OnInit {
     return parentPaths;
   }
 
+  get canUploadFiles() {
+    return this.userService.canAddArticles();
+  }
+
   constructor(
     private dialog: MatDialog,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {

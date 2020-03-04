@@ -2,3 +2,8 @@ mat-card {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+mat-card-content {
+  margin: 15px;
+  overflow: auto;
+}

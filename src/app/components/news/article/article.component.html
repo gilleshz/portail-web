@@ -1,11 +1,11 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ article.title }}</mat-card-title>
+    <mat-card-title>{{ prependTitle + ' ' + article?.title }}</mat-card-title>
     <mat-card-subtitle>
       Publié le {{ article?.date?.toDate() | date:'medium' }}
       <ng-container *ngIf="author">par {{ author.firstName }} {{ author.lastName }}</ng-container>
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content [innerHTML]="article.content">
+  <mat-card-content [innerHTML]="article?.content">
   </mat-card-content>
 </mat-card>
