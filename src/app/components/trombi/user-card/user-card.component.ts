@@ -45,8 +45,8 @@ export class UserCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.dialogOpened = false;
       if (result) {
-        result.joinDate = firebase.firestore.Timestamp.fromDate(result.joinDate);
-        this.usersService.updateUser(this.user.uid, result);
+        result.joinDate = result.joinDate ? firebase.firestore.Timestamp.fromDate(result.joinDate) : null;
+        this.usersService.updateUser(this.user.uid, {...this.user, ...result });
       }
     });
   }

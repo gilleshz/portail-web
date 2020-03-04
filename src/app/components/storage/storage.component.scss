@@ -7,6 +7,10 @@
   flex-wrap: wrap;
 }
 
+.directories, .breadcrumbs {
+  margin-top: 15px;
+}
+
 .breadcrumbs {
   flex: 1 1 auto;
   background-color: rgba(255, 255, 255, 0);
@@ -55,7 +59,7 @@ button {
     display: block;
   }
 
-  .add-directory-small {
+  .add-file {
     margin-right: 4px;
   }
 }
