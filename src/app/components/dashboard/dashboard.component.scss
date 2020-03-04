@@ -1,21 +1,45 @@
 .grid-container {
   margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+.dashboard-trombi {
+  grid-column: 2 / span 3;
+  grid-row: 1 / 2;
+}
+.dashboard-files {
+  grid-column: 1 / 1;
+  grid-row: 1 / 2;
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+.dashboard-news {
+  grid-column: 1 / span 3;
+  grid-row: 2 / 2;
 }
 
-.dashboard-card-content {
-  text-align: center;
+.trombi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+
+@media (max-width: 660px) {
+  .dashboard-trombi {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+  .dashboard-files {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+  }
+
+  .dashboard-news {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+  }
+
+}
+

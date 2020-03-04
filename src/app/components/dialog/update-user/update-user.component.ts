@@ -5,7 +5,6 @@ import { User } from 'src/app/models/user';
 import { UserCardComponent } from 'src/app/components/trombi/user-card/user-card.component';
 import { UserService } from 'src/app/services/user.service';
 import { availableRoles } from 'src/app/models/roles';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-update-user',
@@ -19,8 +18,8 @@ export class UpdateUserComponent {
 
   form: FormGroup = new FormGroup({
     firstName: new FormControl(this.data.firstName, [Validators.required]),
-    lastName: new FormControl(this.data.lastName, [Validators.required, Validators.email]),
-    email: new FormControl(this.data.email, [Validators.required, Validators.email]),
+    lastName: new FormControl(this.data.lastName, [Validators.required]),
+    email: new FormControl({ value: this.data.email, disabled: true }, [Validators.required, Validators.email]),
     phone: new FormControl(this.data.phone),
     team: new FormControl(this.data.team),
     joinDate: new FormControl(this.data.joinDate?.toDate()),

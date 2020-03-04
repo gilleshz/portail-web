@@ -59,4 +59,8 @@ export class UserService {
   canAddArticles() {
     return this.isAdmin();
   }
+
+  canUploadFiles() {
+    return this.isAdmin() || this.isClient();
+  }
 }

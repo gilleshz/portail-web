@@ -3,7 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { User } from 'src/app/models/user';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +17,7 @@ export class UsersService {
     private firestore: AngularFirestore
   ) {
     this.usersCollection = firestore.collection<User>('users');
-    this.users = this.usersCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(action => {
-          const data = action.payload.doc.data() as User;
-          const uid = action.payload.doc.id;
-          return { uid, ...data };
-        });
-      })
-    );
+    this.users = this.usersCollection.valueChanges({ idField: 'uid'});
   }
 
   updateUser(uid: string, user: User) {

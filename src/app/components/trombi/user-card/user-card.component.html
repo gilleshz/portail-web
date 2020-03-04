@@ -20,7 +20,7 @@
       (click)="openUploadDialog()"
       [alt]="userFullName"
     >
-    <div class="overlay">
+    <div *ngIf="canUpdateUser()" class="overlay">
       <div class="text">Modifier l'image</div>
     </div>
   </div>
