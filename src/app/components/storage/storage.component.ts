@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
 import { Reference } from '@angular/fire/storage/interfaces';
 import { UpdateUserComponent } from 'src/app/components/dialog/update-user/update-user.component';
@@ -12,6 +12,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./storage.component.scss']
 })
 export class StorageComponent implements OnInit {
+
+  @Input() showHeader = true;
 
   private currentPath = '';
   subDirectories: Reference[] = [];

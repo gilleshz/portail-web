@@ -1,34 +1,32 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile colspan="2" rowspan="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            Actualités
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="2">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            Dernières personnes arrivées
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content trombi">
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1">
-      <mat-card class="dashboard-card" style="padding-top: 0">
-        <mat-card-content class="dashboard-card-content">
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+
+  <mat-card class="dashboard-trombi">
+    <mat-card-header>
+      <mat-card-title>
+        Nouveaux arrivants
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="trombi">
+      <app-user-card *ngFor="let user of users | async" [user]="user"></app-user-card>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-files">
+    <mat-card-header>
+      <mat-card-title>
+        Fichiers
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <app-storage [showHeader]="false"></app-storage>
+    </mat-card-content>
+  </mat-card>
+
+  <app-article
+      class="dashboard-news"
+      prependTitle="Dernier article publié : "
+      [article]="article | async"
+  >
+  </app-article>
+
 </div>

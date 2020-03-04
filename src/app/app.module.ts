@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
@@ -45,8 +45,10 @@ import { UploadFileComponent } from './components/dialog/upload-file/upload-file
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DropzoneDirective } from './directives/dropzone.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { CommonModule } from '@angular/common';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -104,7 +106,9 @@ import { CommonModule } from '@angular/common';
     UpdateUserComponent
   ],
   providers: [
-  ],
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

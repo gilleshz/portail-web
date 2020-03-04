@@ -10,12 +10,14 @@ import { User } from 'src/app/models/user';
 export class ArticleComponent implements OnInit {
 
   @Input() article: Article;
+  @Input() prependTitle = '';
+
   author: User = undefined;
 
   constructor() { }
 
   ngOnInit() {
-    this.article.author.get().then(user => this.author = user.data());
+    this.article?.author.get().then(user => this.author = user.data());
   }
 
 }

@@ -35,6 +35,10 @@ export class UserCardComponent implements OnInit {
   }
 
   openEditionDialog(): void {
+    if (!this.userService.canUpdateUser(this.user)) {
+      return;
+    }
+
     this.dialogOpened = true;
 
     const dialogRef = this.dialog.open(UpdateUserComponent, {
@@ -52,7 +56,7 @@ export class UserCardComponent implements OnInit {
   }
 
   openUploadDialog(): void {
-    if (this.dialogOpened) {
+    if (this.dialogOpened || !this.userService.canUpdateUser(this.user)) {
       return;
     }
 

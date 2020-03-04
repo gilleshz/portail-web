@@ -21,20 +21,9 @@ export class NewsService {
     private firestore: AngularFirestore
   ) {
     this.articlesCollection = firestore.collection<Article>('news');
-    this.articles = this.articlesCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(action => {
-          const data = action.payload.doc.data() as Article;
-          const uid = action.payload.doc.id;
-          return { uid, ...data };
-        });
-      }),
+    this.articles = this.articlesCollection.valueChanges({ idField: 'uid' }).pipe(
       map(articles => articles.sort(NewsHelper.compareArticlesByDate).reverse())
     );
-  }
-
-  updateArticle(uid: string, article: Article) {
-    return this.firestore.collection('news').doc(uid).set(article);
   }
 
   createArticle(title: string, content: string) {
