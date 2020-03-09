@@ -30,5 +30,5 @@
 </div>
 
 <div *ngIf="files.length > 0"  class="files">
-  <app-file *ngFor="let file of files" [file]="file"></app-file>
+  <app-file *ngFor="let file of files" [file]="file" (delete)="refresh()"></app-file>
 </div>

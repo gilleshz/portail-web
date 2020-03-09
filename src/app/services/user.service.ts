@@ -61,6 +61,10 @@ export class UserService {
   }
 
   canUploadFiles() {
-    return this.isAdmin() || this.isClient();
+    return this.isAdmin() || this.isEmployee();
+  }
+
+  canDeleteFiles() {
+    return this.isAdmin();
   }
 }

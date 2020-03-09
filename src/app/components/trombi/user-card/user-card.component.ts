@@ -64,7 +64,7 @@ export class UserCardComponent implements OnInit {
 
     const dialogRef = this.dialog.open(
       UploadFileComponent,
-      { width: '500px', data: { path: 'Trombinoscope', fileName: this.userFullName, maxFiles: 1, accept: ['.jpg', '.png'] } }
+      { width: '500px', data: { path: 'Trombinoscope', fileName: this.user.email, maxFiles: 1, accept: ['.jpg', '.png'] } }
     );
 
     dialogRef.afterClosed().subscribe((result: Array<Observable<string>>) => {

@@ -1,1 +1,14 @@
-<a mat-stroked-button target="_blank" [href]="downloadUrl">{{ file.name }}</a>
+<a mat-stroked-button target="_blank" [href]="downloadUrl" (contextmenu)="onContextMenu($event)">
+  {{ file.name }}
+</a>
+
+<div style="visibility: hidden; position: fixed"
+     [style.left]="contextMenuPosition.x"
+     [style.top]="contextMenuPosition.y"
+     [matMenuTriggerFor]="contextMenu">
+</div>
+<mat-menu #contextMenu="matMenu">
+  <ng-template matMenuContent>
+    <button mat-menu-item (click)="onDelete()">Supprimer le fichier</button>
+  </ng-template>
+</mat-menu>
