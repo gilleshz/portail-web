@@ -27,22 +27,26 @@ export class UserService {
     this.user.next(null);
   }
 
+  hasRoles(): boolean {
+    return !!this.user.getValue() && !!this.user.getValue().roles;
+  }
+
   isAdmin(): boolean {
-    if (!this.user.getValue()) {
+    if (!this.hasRoles()) {
       return false;
     }
     return this.user.getValue().roles.includes('admin');
   }
 
   isClient(): boolean {
-    if (!this.user.getValue()) {
+    if (!this.hasRoles()) {
       return false;
     }
     return this.user.getValue().roles.includes('client');
   }
 
   isEmployee(): boolean {
-    if (!this.user.getValue()) {
+    if (!this.hasRoles()) {
       return false;
     }
     return this.user.getValue().roles.includes('employee');
