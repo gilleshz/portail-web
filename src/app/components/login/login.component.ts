@@ -28,7 +28,16 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    this.authenticationService.signIn(this.form.get('email').value, this.form.get('password').value);
+    const passwordControl = this.form.get('password');
+    const emailControl = this.form.get('email');
+      this.authenticationService.signIn(emailControl.value, passwordControl.value)
+        .catch(
+          () => {
+            passwordControl.setErrors({incorrect: true});
+            emailControl.setErrors({incorrect: true})
+          }
+        )
+      ;
   }
 
   getEmailErrorMessage() {
@@ -38,6 +47,8 @@ export class LoginComponent implements OnInit {
   }
 
   getPasswordErrorMessage() {
-    return this.form.get('password').hasError('required') ? 'Veuillez entrer votre mot de passe' : '';
+    return this.form.get('password').hasError('required') ? 'Veuillez entrer votre mot de passe' :
+      this.form.get('password').hasError('incorrect') ? 'L\'e-mail ou le mot de passe est incorrect' :
+        '';
   }
 }
