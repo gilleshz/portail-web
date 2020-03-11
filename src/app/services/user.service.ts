@@ -32,24 +32,15 @@ export class UserService {
   }
 
   isAdmin(): boolean {
-    if (!this.hasRoles()) {
-      return false;
-    }
-    return this.user.getValue().roles.includes('admin');
+    return this.hasRoles() ? this.user.getValue().roles.includes('admin') : false;
   }
 
   isClient(): boolean {
-    if (!this.hasRoles()) {
-      return false;
-    }
-    return this.user.getValue().roles.includes('client');
+    return this.hasRoles() ? this.user.getValue().roles.includes('client') : false;
   }
 
   isEmployee(): boolean {
-    if (!this.hasRoles()) {
-      return false;
-    }
-    return this.user.getValue().roles.includes('employee');
+    return this.hasRoles() ? this.user.getValue().roles.includes('employee') : false;
   }
 
   canUpdateUser(user: User): boolean {
