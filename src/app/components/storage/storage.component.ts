@@ -43,7 +43,7 @@ export class StorageComponent implements OnInit {
   }
 
   get canUploadFiles() {
-    return this.userService.canAddArticles();
+    return this.userService.canUploadFiles();
   }
 
   constructor(
